@@ -1,5 +1,5 @@
 #!/bin/bash
-# author: cesar.alcancio@payclip.com
+# author: cesar.alcancio@gmail.com
 # This script is to download logs from CloudWatch
 
 scriptName=$0

@@ -1,3 +1,3 @@
 #!/bin/bash
-# author: cesar.alcancio@payclip.com
+# author: cesar.alcancio@gmail.com
 docker-compose up -d
