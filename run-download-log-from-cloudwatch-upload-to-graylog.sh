@@ -3,12 +3,12 @@
 # This script is to download logs from CloudWatch
 
 scriptName=$0
-if [ "$1" == "-h" ] || [ "$1" == "-help" ]; then
+if [ "$1" == "-h" ] || [ "$1" == "--h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
     echo "Usage: $scriptName [logGroupName] [maxItems]"
     echo "Description: It needs to install the jq to parse JSON response from AWS CLI"
     echo "LogGroupName: CloudWatch logGroupName. Default: /ecs/prod1-service-loans"
     echo "MaxItems: Last Streams Name that the script will download. Default: 5. The 5 last items."
-	echo "AWSProfile: AWS Profile with credentials to download the log from CloudWatch."
+	echo "AWSProfile: AWS Profile with credentials to download the log from CloudWatch. Default: clip-prod."
     exit 1
 fi
 
