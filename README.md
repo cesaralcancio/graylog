@@ -1,6 +1,14 @@
 # Graylog
 Download log from CloudWatch and upload to local GrayLog.
 
+# Versions
+Docker:
+Docker version 18.09.2, build 6247962
+
+Bash:
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)
+Copyright (C) 2007 Free Software Foundation, Inc.
+
 # Run the run-docker-compose.sh
 run-docker-compose.sh script will up Mongo DB, ElasticSearch and GrayLog
 
