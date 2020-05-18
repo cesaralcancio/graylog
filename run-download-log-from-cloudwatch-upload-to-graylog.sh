@@ -31,7 +31,7 @@ while read -r line; do
 	echo "Downloading log stream $logStreamName of group name $logGroupName into file $logLocalFileName"
 	aws logs get-log-events --log-group-name $logGroupName --log-stream-name $logStreamName --profile clip-prod --region us-west-2 --output text > ./local-logs/$logLocalFileName
 	count=0
-	cat ./service-loans-logs/$logLocalFileName |
+	cat ./local-logs/$logLocalFileName |
 	while read -r inline; do
 		count=$((count + 1))
 		json=${inline:21:${#inline}-14}}
