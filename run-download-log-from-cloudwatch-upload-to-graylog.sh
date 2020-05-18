@@ -6,8 +6,9 @@ scriptName=$0
 if [ "$1" == "-h" ] || [ "$1" == "-help" ]; then
     echo "Usage: $scriptName [logGroupName] [maxItems]"
     echo "Description: It needs to install the jq to parse JSON response from AWS CLI"
-    echo "LogGroupName: CloudWatch logGroupName. Default: /ecs/dev1-service-loans"
+    echo "LogGroupName: CloudWatch logGroupName. Default: /ecs/prod1-service-loans"
     echo "MaxItems: Last Streams Name that the script will download. Default: 5. The 5 last items."
+	echo "AWSProfile: AWS Profile with credentials to download the log from CloudWatch."
     exit 1
 fi
 
@@ -16,7 +17,7 @@ maxItems=${2:-5}
 AWSProfile=${3:-clip-prod}
 
 # Create folder if it doesn't exist
-mkdir -p ./service-loans-logs/
+mkdir -p ./local-logs/
 
 # Getting the streams name
 echo "Getting $maxItems streams for group $logGroupName using the profile $AWSProfile"
@@ -28,7 +29,7 @@ while read -r line; do
 	logStreamName=$line
 	logLocalFileName=${logStreamName//\//-}.log
 	echo "Downloading log stream $logStreamName of group name $logGroupName into file $logLocalFileName"
-	aws logs get-log-events --log-group-name $logGroupName --log-stream-name $logStreamName --profile clip-prod --region us-west-2 --output text > ./service-loans-logs/$logLocalFileName
+	aws logs get-log-events --log-group-name $logGroupName --log-stream-name $logStreamName --profile clip-prod --region us-west-2 --output text > ./local-logs/$logLocalFileName
 	count=0
 	cat ./service-loans-logs/$logLocalFileName |
 	while read -r inline; do
